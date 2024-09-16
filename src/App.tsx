@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+interface author {
+  id: number;
+  name: string;
+}
+interface dataType {
+  id: number;
+  title: string;
+  body: string;
+  author: author;
+}
+const App = () => {
+  const [dataResource, setDataResource] = useState<dataType[]>([]);
+  
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log((e.currentTarget.elements[0] as HTMLInputElement).value);
+    
+    setDataResource(e.currentTarget.elements. as HTMLInputElement).value)
+  };
+  const handleRemove = () => {};
+  const handleUpdate = () => {};
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="left-container">
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="title" />
+          <input type="text" />
+          <input type="text" />
+          <input type="text" />
+          <input type="text" />
+          <input type="text" />
+          <input type="submit" />
+        </form>
+      </div>
+      <div className="right-container"></div>
     </div>
   );
-}
+};
 
 export default App;
